@@ -4,7 +4,6 @@ apply plugin: 'com.github.dcendents.android-maven'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.hc.crashlibary"
         minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
