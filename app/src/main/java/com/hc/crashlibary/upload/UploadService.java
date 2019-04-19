@@ -24,7 +24,7 @@ public class UploadService extends IntentService {
     /**
      * 压缩包名称的一部分：时间戳
      */
-    public final static SimpleDateFormat ZIP_FOLDER_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SS", Locale.getDefault());
+    public final static SimpleDateFormat ZIP_FOLDER_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HHmmssSS", Locale.getDefault());
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.

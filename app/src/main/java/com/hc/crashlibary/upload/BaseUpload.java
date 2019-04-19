@@ -33,7 +33,7 @@ import java.util.Locale;
 public abstract class BaseUpload implements ILogUpload {
     public Context mContext;
 
-    public final static SimpleDateFormat yyyy_MM_dd_HH_mm_ss_SS = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SS", Locale.getDefault());
+    public final static SimpleDateFormat yyyy_MM_dd_HH_mm_ss_SS = new SimpleDateFormat("yyyy-MM-dd HHmmssSS", Locale.getDefault());
 
     public BaseUpload(Context context) {
         mContext = context;
