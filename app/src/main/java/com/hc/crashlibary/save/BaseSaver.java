@@ -96,7 +96,19 @@ public abstract class BaseSaver implements ISave {
         LogUtil.d("添加的内容是:\n" + sb.toString());
         return sb.toString();
     }
-
+    public  String getChannel(){
+        ApplicationInfo appInfo;
+        try {
+            appInfo =this.mContext.getPackageManager().getApplicationInfo(this.mContext.getPackageName(), PackageManager.GET_META_DATA);
+            // String appName = appInfo.loadLabel(MainActivity.getCurrentActivity().getPackageManager()) + "";
+            String appChannel = appInfo.metaData.getString("UMENG_CHANNEL");
+            Log.i("umeng","渠道号"+appChannel);
+            return  appChannel;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "mengduo";
+        }
+    }
     /**
      * 写入设备的各种参数信息之前，请确保File文件以及他的父路径是存在的
      *
@@ -123,6 +135,7 @@ public abstract class BaseSaver implements ISave {
         sb.append("DEVICE: ").append(Build.DEVICE).append('\n');
         sb.append("HARDWARE: ").append(Build.HARDWARE).append('\n').append('\n');
         sb.append("uuid: ").append(androidId).append('\n').append('\n');
+        sb.append("channel: ").append(this.getChannel()).append('\n').append('\n');
         LogUtil.d("创建的设备信息（加密前） = \n" + sb.toString());
         //加密信息
         sb = new StringBuilder(encodeString(sb.toString()));

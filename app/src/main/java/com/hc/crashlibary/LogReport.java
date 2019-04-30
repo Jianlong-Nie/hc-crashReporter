@@ -122,6 +122,7 @@ public class LogReport {
         if (mEncryption != null) {
             mLogSaver.setEncodeType(mEncryption);
         }
+
         CrashHandler.getInstance().init(mLogSaver);
         LogWriter.getInstance().init(mLogSaver);
     }
