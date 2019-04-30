@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 
 import com.hc.crashlibary.LogReport;
@@ -102,6 +103,7 @@ public abstract class BaseSaver implements ISave {
      * @param file 需要创建的文件
      */
     public File createFile(File file, Context context) {
+        String androidId = Settings.Secure.getString(this.mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
         StringBuilder sb = new StringBuilder();
         sb.append("Application Information").append('\n');
         PackageManager pm = context.getPackageManager();
@@ -120,8 +122,7 @@ public abstract class BaseSaver implements ISave {
         sb.append("BRAND: ").append(Build.BRAND).append('\n');
         sb.append("DEVICE: ").append(Build.DEVICE).append('\n');
         sb.append("HARDWARE: ").append(Build.HARDWARE).append('\n').append('\n');
-
-
+        sb.append("uuid: ").append(androidId).append('\n').append('\n');
         LogUtil.d("创建的设备信息（加密前） = \n" + sb.toString());
         //加密信息
         sb = new StringBuilder(encodeString(sb.toString()));
